@@ -10,6 +10,9 @@ const Navbar = () => {
   //creating a state for the mobile menu
   const [open , setOpen ] = useState(false)
 
+  //check whether user is logged in or not 
+  const [loginStatus , setLoginStatus] = useState(false)
+
   //establsihing a link between  the component and the context 
   // one possible syntax
   // const contextConnection = useAppContext()
@@ -72,9 +75,15 @@ const Navbar = () => {
                   </div>
 
                   <div className="flow-root">
-                    <a className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                      Logout
-                    </a>
+                    {
+                      loginStatus ? (<Link to={'/logout'} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
+                        Logout
+                      
+                    </Link>) : (<Link to={'/login'} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
+                      Login
+                    </Link>)
+                    }
+                    
                   </div>
                   <div className="flow-root">
                     <Link to={'/'} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer">
@@ -146,9 +155,14 @@ const Navbar = () => {
                     Admin
                   </Link>
 
-                  <a className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                    Logout
-                  </a>
+                  {
+                      loginStatus ? (<Link to={'/logout'} className="text-sm font-medium text-gray-700 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
+                        Logout
+                      
+                    </Link>) : (<Link to={'/login'} className="text-sm font-medium text-gray-700 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
+                      Login
+                    </Link>)
+                    }
                 </div>
 
                 <div className="hidden lg:ml-8 lg:flex">
