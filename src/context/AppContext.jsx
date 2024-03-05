@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { createContext } from 'react'
 import { useContext } from 'react'
 import App from '../App'
@@ -21,9 +21,31 @@ const useAppContext = ()=>{
 
 const AppContextProvider = (props) => {
     // console.log(props)
+
+     //making of the dark theme 
+     const [mode , setMode] = useState("light")
+
+     //toggle the theme
+    const toggleMode = ()=>{
+      if(mode === "light"){
+        setMode("dark")
+        document.body.style.backgroundColor = "rgb(17 , 24 , 39)"
+        document.body.style.color = "white"
+  
+       }
+       else{
+        setMode("light")
+        document.body.style.backgroundColor = "white"
+        document.body.style.color = "rgb(17 , 24 , 39)"
+       }
+  
+
+    }
+
+     
     
   return (
-    <AppContext.Provider value={{}}>
+    <AppContext.Provider value={{mode , setMode , toggleMode}}>
         {props.children}
 
     </AppContext.Provider>
