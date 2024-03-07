@@ -14,13 +14,44 @@ import ProductInfo from './pages/productInfo/ProductInfo'
 import AddProduct from './pages/addproducts/Addproducts'
 import UpdateProduct from './pages/updateproducts/UpdateProducts'
 
+//testing purpose 
+
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+//importing the reducers
+import { addElementToTheCart , deleteElementFromTheCart } from './reudx/slices/CartSlice'
+
+
 function App() {
   const [count, setCount] = useState(0)
+  //instance for the dispatch 
+  const dispatch = useDispatch()
+
+  //taking the data from the store
+  const item = useSelector((state)=>(state.cart))
+  console.log(item)
+
+
+  //handler functions to note the events
+  const addToCart = ()=>{
+    dispatch(addElementToTheCart({
+      name:"T-shirts",
+      price:12,
+      id:1
+    }))
+  }
+
+  const deleteFromCart = ()=>{
+    dispatch(deleteElementFromTheCart(item[0].id))
+  }
+
 
   return (
     <>
     <div>
       <Navbar />
+      <button onClick={addToCart} className='bg-red-100 p-4 ml-7'>Add</button>
+      <button onClick={deleteFromCart} className='bg-red-100 p-4 ml-7'>Del</button>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/order' element={<Orders />} />
