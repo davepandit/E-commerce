@@ -10,6 +10,7 @@ import ErrorPage from "./pages/error/ErrorPage"
 import Allproducts from "./pages/allproducts/Allproducts"
 import Login from './pages/login/Login'
 import SignUp from './pages/signup/SignUp'
+import ProductInfo from './pages/productInfo/ProductInfo'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,7 +27,8 @@ function App() {
         <Route path='*' element={<ErrorPage />} />
         <Route path='/allproducts' element={<Allproducts />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<SignUp/>} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/productinfo/:id' element={<ProductInfo />} />
 
       </Routes>
       <Footer />
