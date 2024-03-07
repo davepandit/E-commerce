@@ -9,7 +9,7 @@ import Footer from "./components/footer/Footer"
 import ErrorPage from "./pages/error/ErrorPage"
 import Allproducts from "./pages/allproducts/Allproducts"
 import Login from './pages/login/Login'
-import Logout from './pages/logout/Logout'
+import SignUp from './pages/signup/SignUp'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,7 +26,7 @@ function App() {
         <Route path='*' element={<ErrorPage />} />
         <Route path='/allproducts' element={<Allproducts />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/logout' element={<Logout />} />
+        <Route path='/signup' element={<SignUp/>} />
 
       </Routes>
       <Footer />
